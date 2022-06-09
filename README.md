@@ -7,6 +7,15 @@ comes to a web app.
 To start the app, just run the following command in the terminal:  
 ``` npm run start ```
 
+Accounts:
+
+- user:
+  - user@example.com
+  - userexample
+- admin:
+  - admin@example.com
+  - adminexample
+
 ## __The stack__
 
 I used Javascript as the main language for this project.
