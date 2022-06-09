@@ -67,7 +67,7 @@ app.get('/login', (req, res) => {
     
     auth
     .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-    .then(() => {
+    .then(({ uid }) => {
         res.redirect('/dashboard');
     })
     .catch(() => {
@@ -88,7 +88,7 @@ app.get('/register', (req, res) => {
     });
 })
 
-app.get('/dashboard?:uid', (req, res) => {
+app.get('/dashboard', (req, res) => {
     const sessionCookie = req.cookies.session || "";
     
     auth
@@ -103,7 +103,8 @@ app.get('/dashboard?:uid', (req, res) => {
 
 app.get('/admin', (req, res) => {
     const sessionCookie = req.cookies.session || "";
-    
+    const adminCookies = req.cookies.role || "user"
+
     auth
     .verifySessionCookie(sessionCookie, true /** checkRevoked */)
     .then(({ uid }) => {
@@ -111,10 +112,12 @@ app.get('/admin', (req, res) => {
 
         if(adminCookies == "admin") {
             res.render("layout", { page: "admin", uid: uid });
-        } else {
+        } else if(adminCookies == "user") {
             res.redirect('/dashboard');
         }
-    })
+
+        res.end();
+    }) 
     .catch(() => {
       res.redirect("/login");
     });
