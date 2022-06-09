@@ -1,5 +1,10 @@
 <header>
     <h1>Auth Project</h1>
+    <input type="checkbox" name="menu" id="menu">
+    <label for="menu">
+        <i class="fa-solid fa-bars" id="open-btn"></i>
+        <i class="fa-solid fa-x" id="close-btn"></i>
+    </label>
     <nav>
         <% if (uid == undefined || uid == null) { %>
             <a href="/">Home</a>
@@ -7,7 +12,7 @@
             <a href="/login">Login</a>
             <a href="/register">Register</a>
         <% } else if(uid) { %>
-            <% if (role == "admin") { %>
+            <% if (role == "admin" && page == "dashboard") { %>
                 <a href="/admin">Admin</a>
             <% } %>
             <% if (page == "admin") { %>

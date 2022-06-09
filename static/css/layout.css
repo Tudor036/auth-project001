@@ -1,0 +1,124 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+/* ----- HEADER ----- */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+
+    position: relative;
+
+    background-color: cadetblue;
+    color: white;
+    /* z-index: 100; */
+}
+
+header label {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+header label #close-btn {
+    display: none;
+}
+
+header input {
+    display: none;
+}
+
+header nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+
+    width: 100%;
+    padding: 1em;
+
+    position: absolute;
+    top: -200%;
+    left: 0%;
+
+    background-color: cadetblue;
+    transition: all 500ms;
+    z-index: -1;
+}
+
+header nav a {
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: -1;
+}
+
+#menu:checked~label #open-btn {
+    display: none;
+}
+
+#menu:checked~label #close-btn {
+    display: block;
+}
+
+#menu:checked~nav {
+    top: calc(4em + 5px);
+}
+
+@media only screen and (min-width: 768px) {
+    header label {
+        display: none;
+    }
+
+    header nav {
+        flex-direction: row;
+        position: relative;
+        top: 0;
+        left: auto;
+        width: initial;
+        padding: auto;
+        z-index: 1;
+    }
+}
+
+/* ----- PAGES ----- */
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+/* ----- FOOTER ----- */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+
+    background-color: lightgrey;
+}

@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layout.css">
+
+    <% if (page == "login" || page == "register") { %>
+        <link rel="stylesheet" href="/css/forms.css">
+    <% } else if(page == "home") { %>
+        <link rel="stylesheet" href="/css/home.css">
+    <% } else if(page == "dashboard") { %>
+        <link rel="stylesheet" href="/css/dashboard.css">
+    <% } else if(page == "admin") { %>
+        <link rel="stylesheet" href="/css/admin.css">
+    <% } %> 
+
     <title>Register</title>
 
     <% if (page == "login" || page == "register") { %>
         <script type="module" src="/bundles/<%= page %>.bundle.js" defer></script>
     <% } %>
+    <script src="https://kit.fontawesome.com/de979365f6.js" crossorigin="anonymous"></script>
 
 </head>
 <body>

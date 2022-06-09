@@ -1,0 +1,22 @@
+/* ----- FORMS ----- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    width: 300px;
+}
+
+form label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+form button {
+    width: 5em;
+}
+
+#error-message {
+    color: red;
+}

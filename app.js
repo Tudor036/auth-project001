@@ -147,7 +147,7 @@ app.get('/sessionLogout', (req, res) => {
 })
 
 app.get("*", (req, res) => {
-    res.render('layout', { page: "nomatch", uid: undefined })
+    res.render('layout', { page: "nomatch", uid: undefined, role: "" })
 })
 
 // ----- ACTIVATE APP -----
