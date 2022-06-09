@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Register</title>
+
+    <% if (page == "login" || page == "register") { %>
+        <script type="module" src="/bundles/<%= page %>.bundle.js" defer></script>
+    <% } %>
+
+</head>
+<body>
+    <% if (page != "home" && page != "login" && page != "register") { %>
+        <%- include('./modules/header.ejs', { uid: uid }) %> 
+    <% } else { %>
+        <%- include('./modules/header.ejs') %> 
+    <% } %> 
+    <main>
+        <%- include(`./pages/${page}.ejs`) %> 
+    </main>
+    <%- include('./modules/footer.ejs') %> 
+</body>
+</html>

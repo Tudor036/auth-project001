@@ -1,0 +1,13 @@
+<header>
+    <h1>Auth Project</h1>
+    <nav>
+        <% if (uid == undefined || uid == null) { %>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } else if(uid) { %>
+            <a href="/sessionLogout">Logout</a>
+        <% } %> 
+    </nav>
+</header>
