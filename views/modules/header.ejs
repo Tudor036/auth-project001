@@ -7,6 +7,12 @@
             <a href="/login">Login</a>
             <a href="/register">Register</a>
         <% } else if(uid) { %>
+            <% if (role == "admin") { %>
+                <a href="/admin">Admin</a>
+            <% } %>
+            <% if (page == "admin") { %>
+                <a href="/dashboard">Dashboard</a>
+            <% } %>
             <a href="/sessionLogout">Logout</a>
         <% } %> 
     </nav>

@@ -14,7 +14,7 @@
 </head>
 <body>
     <% if (page != "home" && page != "login" && page != "register") { %>
-        <%- include('./modules/header.ejs', { uid: uid }) %> 
+        <%- include('./modules/header.ejs', { uid: uid, role: role }) %> 
     <% } else { %>
         <%- include('./modules/header.ejs') %> 
     <% } %> 

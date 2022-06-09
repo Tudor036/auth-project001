@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
         res.redirect('/dashboard');
     })
     .catch(() => {
-        res.render("layout", { page: 'home', uid: undefined });
+        res.render("layout", { page: 'home', uid: undefined, role: "" });
     });
 })
 
@@ -71,7 +71,7 @@ app.get('/login', (req, res) => {
         res.redirect('/dashboard');
     })
     .catch(() => {
-        res.render("layout", { page: 'login', uid: undefined });
+        res.render("layout", { page: 'login', uid: undefined, role: "" });
     });
 })
 
@@ -84,17 +84,18 @@ app.get('/register', (req, res) => {
         res.redirect('/dashboard');
     })
     .catch(() => {
-        res.render("layout", { page: 'register', uid: undefined });
+        res.render("layout", { page: 'register', uid: undefined, role: "" });
     });
 })
 
 app.get('/dashboard', (req, res) => {
     const sessionCookie = req.cookies.session || "";
+    const adminCookies = req.cookies.role || "user";
     
     auth
     .verifySessionCookie(sessionCookie, true /** checkRevoked */)
     .then(({ uid }) => {
-        res.render("layout", { page: "dashboard", uid: uid });
+        res.render("layout", { page: "dashboard", uid: uid, role: adminCookies });
     })
     .catch(() => {
       res.redirect("/login");
@@ -103,7 +104,7 @@ app.get('/dashboard', (req, res) => {
 
 app.get('/admin', (req, res) => {
     const sessionCookie = req.cookies.session || "";
-    const adminCookies = req.cookies.role || "user"
+    const adminCookies = req.cookies.role || "user";
 
     auth
     .verifySessionCookie(sessionCookie, true /** checkRevoked */)
@@ -111,12 +112,10 @@ app.get('/admin', (req, res) => {
         console.log("Logged in:", uid);
 
         if(adminCookies == "admin") {
-            res.render("layout", { page: "admin", uid: uid });
+            res.render("layout", { page: "admin", uid: uid, role: adminCookies });
         } else if(adminCookies == "user") {
             res.redirect('/dashboard');
         }
-
-        res.end();
     }) 
     .catch(() => {
       res.redirect("/login");
